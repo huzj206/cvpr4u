@@ -30,8 +30,8 @@ pip install -r requirements.txt
 ```
 
 
-## How to use 
-Tips: Google Colabration is a recommended platform
+## How to use
+
 - **1. Clone the repository**
 ```
 git clone https://github.com/huzj206/cvpr4u.git
@@ -56,4 +56,13 @@ The .txt file will be named using keywords and the current date and time to avoi
 ```
 cd ./result
 cvpr_report_isp detection realtime_<YYYY-MM-DD>_<HH-MM-SS>.txt
+```
+
+## How to use in Google Colabration
+
+- **Tips: Google account is all your need**
+
+Please check the following Jupyter Notebook for details.
+```
+ cvpr4u_colab.ipynb 
 ```
