@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+scikit-learn
+nltk
+fitz
+transformers
+datasets
+joblib
+pymupdf --upgrade
