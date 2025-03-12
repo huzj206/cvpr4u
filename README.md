@@ -60,7 +60,7 @@ cvpr_report_isp detection realtime_<YYYY-MM-DD>_<HH-MM-SS>.txt
 
 ## How to use in Google Colabration
 
-- **Tips: Google account is all your need**
+- **Tips: Don't forget use GPU mode**
 
 Please check the following Jupyter Notebook for details.
 ```
