@@ -30,7 +30,7 @@ pip install -r requirements.txt
 ```
 
 
-## How to use
+## How to use in your local environment
 
 - **1. Clone the repository**
 ```
