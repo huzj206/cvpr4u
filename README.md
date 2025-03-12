@@ -18,7 +18,8 @@ To use cvpr4u, you need to have the following Python dependencies:
 - `beautifulsoup4`
 - `nltk`
 - `sklearn`
-- `fitz` (PyMuPDF)
+- `fitz`
+- `PyMuPDF`
 - `transformers`
 - `datasets`
 - `joblib`
@@ -60,9 +61,14 @@ cvpr_report_isp detection realtime_<YYYY-MM-DD>_<HH-MM-SS>.txt
 
 ## How to use in Google Colabration
 
-- **Tips: Don't forget use GPU mode**
+- **Tips: Don't forget use GPU mode at first**
 
-Please check the following Jupyter Notebook for details.
+Open the following file in any text editor and copy&paste the executable code blocks in your Google Colab.
+
+or
+
+Open the following file in your Google Colab and run it.
+
 ```
  cvpr4u_colab.ipynb 
 ```
