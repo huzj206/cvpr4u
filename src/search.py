@@ -1,11 +1,18 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import os
 import nltk
 from nltk.corpus import stopwords
 from joblib import Parallel, delayed
 
+# 设置nltk缓存目录
+nltk_data_dir = os.path.join("data", "nltk_data")
+if not os.path.exists(nltk_data_dir):
+    os.makedirs(nltk_data_dir)
+nltk.data.path.append(nltk_data_dir)
+
 # 确保下载了nltk的停用词
-nltk.download('stopwords')
+nltk.download('stopwords', download_dir=nltk_data_dir)
 
 def search(queries, papers):
     # 合并多个关键词为一个查询字符串
