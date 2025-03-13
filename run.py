@@ -1,4 +1,5 @@
 import argparse
+import torch
 from src.fetch import fetch
 from src.search import search
 from src.extract import extract
@@ -12,8 +13,15 @@ def main():
     parser.add_argument('--kw1', type=str, help='Keyword 1', default="")
     parser.add_argument('--kw2', type=str, help='Keyword 2', default="")
     parser.add_argument('--url', type=str, help='URL to fetch papers from', required=True)
-
+    parser.add_argument('--gpu', type=int, default=0, help='Specify which GPU to use. Defaults to 0.')
     args = parser.parse_args()
+    
+    # 检查环境中GPU配置
+    if torch.cuda.is_available():
+        print(f"GPU is available. Using {torch.cuda.get_device_name(0)}_num:{args.gpu}")
+    else:
+        print("GPU doesn't work. Please check your environment setting.")
+        exit(1)
 
     # 获取关键词
     queries = [kw for kw in [args.kw0, args.kw1, args.kw2] if kw]
@@ -35,7 +43,7 @@ def main():
 
     # 并行处理摘要
     pdf_texts = [paper['pdf_text'] for _, paper in relevant_papers]
-    summaries = summarize(pdf_texts)  # 并行摘要
+    summaries = summarize(args.gpu,pdf_texts)  # 并行摘要
 
     # 将摘要更新回 paper
     for (_, paper), summary in zip(relevant_papers, summaries):
