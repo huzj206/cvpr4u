@@ -1,15 +1,4 @@
 from transformers import pipeline
-import nltk
-import os
-
-# 设置nltk缓存目录
-nltk_data_dir = os.path.join("data", "nltk_data")
-if not os.path.exists(nltk_data_dir):
-    os.makedirs(nltk_data_dir)
-nltk.data.path.append(nltk_data_dir)
-
-# 确保下载了nltk的停用词
-nltk.download('stopwords', download_dir=nltk_data_dir)
 
 # 初始化文本生成模型（BART或T5）
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn", device=0)
