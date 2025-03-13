@@ -1,10 +1,12 @@
 from transformers import pipeline
 
-# 初始化文本生成模型（BART或T5）
-summarizer = pipeline("summarization", model="facebook/bart-large-cnn", device=0)
+def summarize(gpu_num, texts, min_ratio=0.2, max_ratio=0.5, min_length=50, max_length_cap=512):
 
-def summarize(texts, min_ratio=0.2, max_ratio=0.5, min_length=50, max_length_cap=512):
+# 初始化文本生成模型（BART或T5）
+    summarizer = pipeline("summarization", model="facebook/bart-large-cnn", device=gpu_num)
+
     summaries = []
+
     for text in texts:
         truncated_text = text[:2048]  # 限制最大输入长度，避免 OOM
         input_length = len(truncated_text.split())  # **按词计算长度**
@@ -30,4 +32,3 @@ def summarize(texts, min_ratio=0.2, max_ratio=0.5, min_length=50, max_length_cap
         summaries.append(formatted_summary)
 
     return summaries
-
